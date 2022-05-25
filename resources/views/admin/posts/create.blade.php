@@ -19,12 +19,14 @@
     
     <!-- Main content -->
 <section class="content">           
-    <div class="card card-info">
-        <div class="card-header">
-            <h3 class="card-title">Add new Post</h3>
-        </div>
-   
-    </div>
+<div class="card card-primary">
+<div class="card-header">
+<h3 class="card-title">Quick Example</h3>
+</div>
+
+
+
+</div>
 </section>
 
 @endsection      
