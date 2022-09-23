@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,19 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/post/{id}',[HomeController::class,'post'])->name('posts');
+
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     
-    Route::get('/','MainController@index')->name('admin.index');
-    Route::get('/test','MainController@test');
+    Route::get('/', 'MainController@index')->name('admin.index');
+    Route::get('/test', 'MainController@test');
 
-    Route::resource('/categories','CategoryController');
-    Route::resource('/tags','TagController');
-    Route::resource('/posts','PostController');
-
-
+    Route::resource('/categories', 'CategoryController');
+    Route::resource('/tags', 'TagController');
+    Route::resource('/posts', 'PostController');
 });
-
-

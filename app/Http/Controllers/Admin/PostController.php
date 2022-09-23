@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Post;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -19,8 +20,7 @@ class PostController extends Controller
     {
         $posts = Post::paginate(10);
         // dd($posts->categories); 
-        return view('admin.posts.index',compact('posts'));
-
+        return view('admin.posts.index', compact('posts'));
     }
 
     /**
@@ -30,10 +30,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        $cat = Category::pluck('title','id')->all();
+        $cat = Category::pluck('title', 'id')->all();
         // dd($cat);
-        $tag=Tag::pluck('title','id')->all();
-        return view('admin.posts.create',compact('cat','tag'));
+        $tag = Tag::pluck('title', 'id')->all();
+        return view('admin.posts.create', compact('cat', 'tag'));
+        
     }
 
     /**
@@ -45,25 +46,27 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=>'required|min:10',
-            'descript'=>'required',
-            'content'=>'required',
-            'category_id'=>'required',
-            'thumbnail'=>'nullable|image'
+            'title' => 'required',
+            'descript' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'image'
         ]);
+
+
 
         $data = $request->all();
         // dd($data);
         if ($request->hasFile('thumbnail')) {
-            $folder=date('Y-m-d');
+            $folder = date('Y-m-d');
             $data['thumbnail'] = $request->file('thumbnail')->store("img/{$folder}");
         }
 
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
-        return redirect()->route('posts.index')->with('success',"Post added");
+        return redirect()->route('posts.index')->with('success', "Post added");
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -72,7 +75,6 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -85,10 +87,10 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->toArray();
-        $cat = Category::pluck('title','id')->all();
+        $cat = Category::pluck('title', 'id')->all();
         // dd($cat);
-        $tag=Tag::pluck('title','id')->all();  
-        return view('admin.posts.edit',compact('post','tag','cat'));
+        $tag = Tag::pluck('title', 'id')->all();
+        return view('admin.posts.edit', compact('post', 'tag', 'cat'));
     }
 
     /**
@@ -100,7 +102,27 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required',
+            'descript' => 'required',
+            'content' => 'required',
+            'category_id' => 'required|integer',
+            'thumbnail' => 'image'
+        ]);
+
+        $post = Post::find($id);
         
+        $data = $request->all();
+        if ($request->hasFile('thumbnail')) {
+            Storage::delete($post->thumbnail);
+            $folder = date('Y-m-d');
+            $data['thumbnail'] = $request->file('thumbnail')->store("img/{$folder}");
+        }
+        
+        $post->update($data);
+        $post->tags()->sync($request->tags);
+        return redirect()->route('posts.index')->with('success',"Post updated succesfully!");
+
     }
 
     /**
@@ -111,7 +133,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
+        $post = Post::find($id);
+        $post->tags()->sync([]);
+        $post->delete();
+        Storage::delete($post->thumbnail);
         Post::destroy($id);
-        return redirect()->route('posts.index')->with('success','Post deleted');
+
+        return redirect()->route('posts.index')->with('success', 'Post deleted');
     }
 }
