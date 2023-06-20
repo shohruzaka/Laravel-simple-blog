@@ -27,7 +27,7 @@
                         <div class="card">
                             <figure class="card-img-top overlay overlay-1 hover-scale">
                                 <a href="{{ route('posts', ['id' => $post->id]) }}">
-                                    <img src="{{asset('storage/'.$post->thumbnail)}}" alt="here" />
+                                    <img src="{{asset('storage/public/'.$post->thumbnail)}}" alt="here" />
                                 </a>
                                 <figcaption>
                                     <h5 class="from-top mb-0">Batafsil</h5>
@@ -71,7 +71,7 @@
                         @endif
                         <article class="item post col-md-6">
                             <div class="card">
-                                <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="{{Storage::url($post->thumbnail)}}" alt="" /></a>
+                                <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="{{asset('storage/public/'.$post->thumbnail)}}" alt="" /></a>
                                     <figcaption>
                                         <h5 class="from-top mb-0">Batafsil</h5>
                                     </figcaption>
