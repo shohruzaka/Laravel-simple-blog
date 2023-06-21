@@ -18,7 +18,6 @@
   @yield('banner')
 
   <div class="content-wrapper">
-    @yield('articles')
     @yield('content')
   </div>
 

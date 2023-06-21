@@ -22807,7 +22807,7 @@ blockquote.text-center.icon-top:before {
   height: 3.5rem;
 }
 .image-list .post-content {
-  margin-left: 4.25rem;
+  /* margin-left: 4.25rem; */
   margin-bottom: 0;
 }
 .tag-list li {

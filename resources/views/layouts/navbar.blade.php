@@ -1,9 +1,9 @@
-<header class="wrapper bg-soft-primary">
+<header class="wrapper bg-soft-primary shadow-lg">
     <nav class="navbar navbar-expand-lg classic navbar-light navbar-bg-light">
         <div class="container flex-lg-row flex-nowrap align-items-center">
             <div class="navbar-brand w-100">
                 <a href="{{route('home')}}">
-                    <h2>Shohruz.uz</h2>
+                    <h2>SHOHRUZ.UZ</h2>
                 </a>
             </div>
             <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
@@ -13,7 +13,7 @@
                 </div>
                 <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                     <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="{{route('posts',['id'=>15])}}">Post page</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('posts',['id'=>2])}}">Post page</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Link 2</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Link 3</a></li>
                         <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Dropdown</a>

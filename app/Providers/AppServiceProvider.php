@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
-        Schema::defaultStringLength(191);
+        // Schema::defaultStringLength(191);
 
         view()->composer('layouts.sidebar', function($view) {
             $view->with('posts', Post::orderBy('views','desc')->limit(3)->get())

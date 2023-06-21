@@ -13,9 +13,12 @@ class HomeController extends Controller
     {
         $tags=Tag::all();
         $category=Category::all();
-        $posts = Post::orderBy('id','desc')->paginate(5);
-        // $last=Post::latest('id')->first();
-        return view('index',compact(['tags','category','posts',]));
+
+        $last=Post::latest('id')->first();
+        // dd($last);
+        $posts = Post::orderBy('id','desc')->paginate(3);
+        $posts = $posts->except(5);
+        return view('index',compact(['tags','category','posts','last']));
     }
 
     public function post($id){ 

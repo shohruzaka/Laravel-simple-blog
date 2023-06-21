@@ -22,7 +22,6 @@
     
         @foreach ($posts as $post)
         <li>
-            <figure class="rounded"><a href="{{route('posts',['id'=>$post->id])}}"><img src="{{Storage::url($post->thumbnail)}}" alt="" /></a></figure>
             <div class="post-content">
                 <h6 class="mb-2"> <a class="link-dark" href="route('posts',['id'=>$post->id]">{{$post->title}}</a></h6>
                 <ul class="post-meta">
