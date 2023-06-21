@@ -21,6 +21,7 @@
         <div class="row gx-lg-8 gx-xl-12">
             <div class="col-lg-8">
                 <div class="blog classic-view">
+                    @if($posts->currentPage() == 1)
                     <article class="post">
                         <div class="card">
                             <figure class="card-img-top overlay overlay-1 hover-scale">
@@ -58,7 +59,7 @@
                             </div>
                         </div>
                     </article>
-                    
+                    @endif
                 </div>
                 <div class="blog grid grid-view">
                     <div class="row isotope gx-md-8 gy-8 mb-8">
@@ -94,8 +95,10 @@
                         </article>
                         @endforeach
                     </div>
+                    {{$posts->links()}}
+
                 </div>
-                {{$posts->links()}}
+
             </div>
             <aside class="col-lg-4 sidebar">
                 @include('layouts.sidebar')

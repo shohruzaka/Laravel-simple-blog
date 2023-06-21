@@ -2,7 +2,7 @@
 
 @section('title','Post page')
 
-@section('banner')
+@section('banner') 
 
 <section class="wrapper bg-navy">
   <div class="container py-4 py-md-6 text-center">
