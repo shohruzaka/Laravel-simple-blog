@@ -15,7 +15,9 @@ class HomeController extends Controller
         $category=Category::all();
 
         $last=Post::latest('id')->first();
-        $posts = Post::orderBy('id','desc')->paginate(3);
+
+        $posts = Post::where('id','<', $last->id)->orderBy('id','desc')->paginate(3);
+        // $posts = Post::except($last->id)->paginate(5);
         return view('index',compact(['tags','category','posts','last']));
     }
 
