@@ -45,7 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $request->validate([ 
             'title' => 'required',
             'descript' => 'required',
             'content' => 'required',
@@ -59,7 +59,7 @@ class PostController extends Controller
         // dd($data);
         if ($request->hasFile('thumbnail')) {
             $folder = date('Y-m-d');
-            $data['thumbnail'] = $request->file('thumbnail')->store("img/{$folder}");
+            $data['thumbnail'] = $request->file('thumbnail')->store("public/img/{$folder}");
         }
 
         $post = Post::create($data);

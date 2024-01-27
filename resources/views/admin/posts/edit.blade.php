@@ -42,7 +42,7 @@
                     @error('descript')
                     <div class="invalid-feedback"> {{$message}} </div>
                     @enderror
-                </div>
+                </div>  
                 <div class="form-group">
                     <label for="content">Content</label>
                     <textarea id="content" class="@error('content') is-invalid @enderror form-control" id="content" name='content'

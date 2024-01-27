@@ -26,7 +26,7 @@
                         <div class="card">
                             <figure class="card-img-top overlay overlay-1 hover-scale">
                                 <a href="{{ route('posts', ['id' => $last->id]) }}">
-                                    <img src="{{asset('storage/public/'.$last->thumbnail)}}" alt="here" />
+                                    <img src="{{asset('storage/'.$last->thumbnail)}}" alt="here" />
                                 </a>
                                 <figcaption>
                                     <h5 class="from-top mb-0">Batafsil</h5>
@@ -66,7 +66,7 @@
                         @foreach ($posts as $post)
                         <article class="item post col-md-6">
                             <div class="card">
-                                <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="{{asset('storage/public/'.$post->thumbnail)}}" alt="" /></a>
+                                <figure class="card-img-top overlay overlay-1 hover-scale"><a href="#"> <img src="{{asset('storage/'.$post->thumbnail)}}" alt="" /></a>
                                     <figcaption>
                                         <h5 class="from-top mb-0">Batafsil</h5>
                                     </figcaption>

@@ -18,6 +18,7 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 Route::get('/post/{id}',[HomeController::class,'post'])->name('posts');
 
 
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     
     Route::get('/', 'MainController@index')->name('admin.index');
