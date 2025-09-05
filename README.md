@@ -1,6 +1,6 @@
 # 🎓 O‘qituvchi Blogi
 
-📚 **O‘qituvchilar va talabalar uchun foydali maqolalar**,  
+📚 **Professor o‘qituvchilar va talabalar uchun foydali maqolalar**,  
 💡 **zamonaviy ta’lim texnologiyalari**,  
 📝 **metodik qo‘llanmalar**  
 va ✨ **ilhomlantiruvchi maslahatlar jamlanmasi**.
